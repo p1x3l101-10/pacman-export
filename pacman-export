@@ -81,7 +81,7 @@ pacman-install(){
   if [ -e $1 ];then
     escilator=$(privilage-check)
     packages=$(cat $1)
-    eval "$escilator $PACMAN --noconfirm -S $packages"
+    eval "$escilator $PACMAN -S $packages"
   else
     err 1 "No file specified"
   fi
@@ -90,7 +90,7 @@ yay-install(){
   if [ -e $1 ];then
     escilator=$(privilage-check)
     packages=$(cat $1)
-    eval "yay --noconfirm --batchinstall --topdown --sudo $escilator -S $packages"
+    eval "yay --batchinstall --topdown --sudo $escilator -S $packages"
   else
     err 1 "No file specified"
   fi
@@ -99,7 +99,7 @@ yay-install-aur(){
   if [ -e $1 ];then
     escilator=$(privilage-check)
     packages=$(cat $1)
-    eval "yay --noconfirm --batchinstall --sudo $escilator -Sa $packages"
+    eval "yay --batchinstall --sudo $escilator -Sa $packages"
   else
     err 1 "No file specified"
   fi
