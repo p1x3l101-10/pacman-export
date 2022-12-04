@@ -51,11 +51,11 @@ version(){
   err 0
 }
 export-unified(){
-  eval "$PACMAN -Qqe" > $DEFAULT_UNIFIED_FILE
+  pacman -Qqe > $DEFAULT_UNIFIED_FILE
 }
 export-split(){
-  eval "$PACMAN -Qqen" > $DEFAULT_REPO_FILE
-  eval "$PACMAN -Qqem" > $DEFAULT_FORGIN_FILE
+  pacman -Qqen > $DEFAULT_REPO_FILE
+  pacman -Qqem > $DEFAULT_FORGIN_FILE
 }
 export-repo-only(){
   export-split
@@ -63,6 +63,7 @@ export-repo-only(){
 }
 export-forign-only(){
   export-split
+  rm $DEFAULT_REPO_FILE
 }
 privilage-check(){
   if [ $EUID -ne 0 ];then
