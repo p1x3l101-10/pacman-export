@@ -1,3 +1,4 @@
-Put all files exept for "pacman-export" in $PREFIX/share/doc/pacman-export
+Put all files exept for "pacman-export" and "LICENCE" in $PREFIX/share/doc/pacman-export
+Put "LICENCE" in $PREFIX/share/licences/pacman-export
 Put "pacman-export" in $PREFIX/bin
 If needed, update the prefix variable in "pacman-export" to the new prefix
