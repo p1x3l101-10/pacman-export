@@ -11,7 +11,6 @@ DEFAULT_REPO_FILE="repo.$DEFAULT_EXTENSION"
 DEFAULT_UNIFIED_FILE="unified.$DEFAULT_EXTENSION"
 DEFAULT_COMMAND="err 1 'Unknown Command'"
 FUNCTION="$1"
-FILE="$2"
 PACMAN="pacman"  # Command to call as pacman
 
 # Functions
@@ -52,7 +51,7 @@ version(){
   err 0
 }
 export-unified(){
-  if [$# -eq 0];then
+  if [ $# -eq 0 ];then
     UNIFIED_FILE="$DEFAULT_UNIFIED_FILE"
   else
     UNIFIED_FILE="$1"
@@ -67,22 +66,22 @@ export-split(){
 export-repo-only(){
   export-split
   rm $DEFAULT_FORGIN_FILE
-  if [$# -ne 0];then
+  if [ $# -ne 0 ];then
     mv $DEFAULT_REPO_FILE $1
   fi
 }
 export-forign-only(){
   export-split
   rm $DEFAULT_REPO_FILE
-  if [$# -ne 0];then
+  if [ $# -ne 0 ];then
     mv $DEFAULT_FORGIN_FILE $1
   fi
 }
 privilage-check(){
-  if [$EUID -ne 0];then
-    if [-e $SYSTEM_PREFIX/bin/sudo];then
+  if [ $EUID -ne 0 ];then
+    if [ -e $SYSTEM_PREFIX/bin/sudo ];then
       return "sudo"
-    elif [-e $SYSTEM_PREFIX/bin/doas];then
+    elif [ -e $SYSTEM_PREFIX/bin/doas ];then
       return "doas"
     else
       err 1 "No privilage escilator"
@@ -92,7 +91,7 @@ privilage-check(){
   fi
 }
 pacman-install(){
-  if [-e $1];then
+  if [ -e $1 ];then
     escilator=$(privilage-check)
     packages=$(cat $1)
     eval "$escilator $PACMAN --noconfirm -S $packages"
@@ -101,7 +100,7 @@ pacman-install(){
   fi
 }
 yay-install(){
-  if [-e $1];then
+  if [ -e $1 ];then
     escilator=$(privilage-check)
     packages=$(cat $1)
     eval "yay --noconfirm --batchinstall --topdown --sudo $escilator -S $packages"
@@ -110,7 +109,7 @@ yay-install(){
   fi
 }
 yay-install-aur(){
-  if [-e $1];then
+  if [ -e $1 ];then
     escilator=$(privilage-check)
     packages=$(cat $1)
     eval "yay --noconfirm --batchinstall --sudo $escilator -Sa $packages"
@@ -118,6 +117,10 @@ yay-install-aur(){
     err 1 "No file specified"
   fi
 }
+
+# Set the file variable
+shift
+FILE="$1"
 
 case "$FUNCTION" in
   -h)
