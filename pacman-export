@@ -120,7 +120,11 @@ yay-install-aur(){
 
 # Set the file variable
 shift
-FILE="$1"
+if [ -e $1 ];then
+  FILE="$1"
+else
+  FILE=""
+fi
 
 case "$FUNCTION" in
   -h)
