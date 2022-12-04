@@ -11,7 +11,7 @@ DEFAULT_REPO_FILE="repo.$DEFAULT_EXTENSION"
 DEFAULT_UNIFIED_FILE="unified.$DEFAULT_EXTENSION"
 DEFAULT_COMMAND="err 1 'Unknown Command'"
 FUNCTION="$1"
-PACMAN="pacman"  # Command to call as pacman
+export FILE="$2"
 
 # Functions
 err(){
@@ -78,28 +78,28 @@ privilage-check(){
   fi
 }
 pacman-install(){
-  if [ -e $1 ];then
+  if [ -e $FILE ];then
     escilator=$(privilage-check)
-    packages=$(cat $1)
-    eval "$escilator $PACMAN -S $packages"
+    packages=$(cat $FILE)
+    echo $packages | yay --repo --sudo $escilator -S -
   else
     err 1 "No file specified"
   fi
 }
 yay-install(){
-  if [ -e $1 ];then
+  if [ -e $FILE ];then
     escilator=$(privilage-check)
-    packages=$(cat $1)
-    eval "yay --batchinstall --topdown --sudo $escilator -S $packages"
+    packages=$(cat $FILE)
+    echo $packages | yay --batchinstall --topdown --sudo $escilator -S -
   else
     err 1 "No file specified"
   fi
 }
 yay-install-aur(){
-  if [ -e $1 ];then
+  if [ -e $FILE ];then
     escilator=$(privilage-check)
-    packages=$(cat $1)
-    eval "yay --batchinstall --sudo $escilator -Sa $packages"
+    packages=$(cat $FILE)
+    echo $packages | yay --batchinstall --sudo $escilator -Sa -
   else
     err 1 "No file specified"
   fi
@@ -131,10 +131,10 @@ case "$FUNCTION" in
     export-forign-only
     ;;
   --import|-i)
-    yay-install "$FILE"
+    yay-install $FILE
     ;;
   --repo)
-    pacman-install "$FILE"
+    pacman-install $FILE
     ;;
   --aur)
     yay-install-aur "$FILE"
