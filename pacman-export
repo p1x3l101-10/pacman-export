@@ -67,9 +67,9 @@ export-forign-only(){
 privilage-check(){
   if [ $EUID -ne 0 ];then
     if [ -e $SYSTEM_PREFIX/bin/sudo ];then
-      return "sudo"
+      export escilator="sudo"
     elif [ -e $SYSTEM_PREFIX/bin/doas ];then
-      return "doas"
+      export escilator="doas"
     else
       err 1 "No privilage escilator"
     fi
