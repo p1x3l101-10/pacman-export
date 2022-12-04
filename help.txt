@@ -1,0 +1,12 @@
+  -h :
+      Prints this menu, then exits
+  --help :
+      Prints a menu of all functions offered by this program, then exits
+  -v | --version
+      Prints the version, then exits
+  -l | --licence :
+      Prints the licence, then exits
+  -e | --export-unified :
+      Exports a list of all explicitly installed packeges to a specified file, or the default if no file is specified
+  -i | --import :
+      Installes all packages specified in a file, with AUR support

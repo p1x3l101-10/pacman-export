@@ -1,0 +1,22 @@
+  -h :
+      Prints a shortened help menu, then exits
+  --help :
+      Prints this menu, then exits
+  -v | --version :
+      Prints the version, then exits
+  -l | --licence :
+      Prints the licence, then exits
+  -e | --export-unified : 
+      Exports a list of all explicitly installed packeges to a specified file, or the default if no file is specified
+  --export-split :
+      Exports a list of all explicitly installed packages to the default files, however it seperates the lists into packages from the repos and forign packages
+  --export-repo-only :
+      Exports a list of all explicitly installed packages from the repos to a specified file, or the default if no file is specified 
+  --export-forign-only :
+      Exports a list of all explicitly installed packages that are forign to a specified file, or the default if no file is specified
+  -i | --import :
+      Installes all packages specified in a file, with AUR support
+  --repo :
+      Installs all packages specified in a file, without AUR support
+  --aur :
+      Installs all packages specified in a file, only from the AUR

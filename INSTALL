@@ -1,0 +1,2 @@
+Put all files exept for "pacman-export" in $PREFIX/share/doc/pacman-export
+Put "pacman-export" in $PREFIX/bin
