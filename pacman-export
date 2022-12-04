@@ -1,7 +1,7 @@
 #!/bin/bash
 # Variables
 NAME="pacman-export"
-VERSION="0.1"
+VERSION="1.0.0"
 SYSTEM_PREFIX="/usr"
 PREFIX="/usr/local"
 DOCUMENT_LOCATION="$PREFIX/share/doc/$NAME"
