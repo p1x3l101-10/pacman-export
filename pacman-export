@@ -3,7 +3,7 @@
 NAME="pacman-export"
 VERSION="0.1"
 SYSTEM_PREFIX="/usr"
-PREFIX="/home/pixel/.local"
+PREFIX="/usr/local"
 DOCUMENT_LOCATION="$PREFIX/share/doc/$NAME"
 DEFAULT_EXTENSION="paclist"
 DEFAULT_FORGIN_FILE="forign.$DEFAULT_EXTENSION"
